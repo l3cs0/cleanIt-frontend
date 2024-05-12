@@ -15,7 +15,13 @@ export class AppComponent {
   fetchData() {
     this.apiService.fetchData().subscribe((response) => {
       this.data = response;
-      console.log('Data: ', this.data);
+      console.log('Datablabla: ', this.data);
+    });
+  }
+  fetchContainerData() {
+    this.apiService.fetchContainerData().subscribe((response) => {
+      this.data = response;
+      console.log('DatafromContainer: ', this.data);
     });
   }
 }
