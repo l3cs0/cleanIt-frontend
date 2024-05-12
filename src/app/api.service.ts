@@ -12,6 +12,6 @@ export class ApiService {
     return this.http.get('http://localhost:8080/greeting');
   }
   fetchContainerData() {
-    return this.http.get('http://cleanit-backend:8080/greeting');
+    return this.http.get('http://backend:8080/greeting');
   }
 }
