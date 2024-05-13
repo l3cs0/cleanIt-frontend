@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private http: HttpClient
+    private _snackBar: MatSnackBar
   ) {
     this.loginForm = new FormGroup({
       email: new FormControl(''),
@@ -32,12 +33,11 @@ export class LoginComponent implements OnInit {
     this.authService
       .login(email, password)
       .then((response) => {
-        console.log(response);
-        console.log(response.data);
         this.router.navigate(['']);
+        this._snackBar.open('Login Successful', 'ok');
       })
       .catch((error) => {
-        console.log('Login Fehlgeschlagen');
+        this._snackBar.open('Login Failed', 'ok');
         console.log(error);
       });
   }

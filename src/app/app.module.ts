@@ -17,6 +17,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LoginComponent } from './login/login.component';
 import { OrderCardComponent } from './order-card/order-card.component';
 import { OrderOverviewComponent } from './order-overview/order-overview.component';
@@ -47,6 +48,7 @@ import { RegisterComponent } from './register/register.component';
     MatButtonModule,
     MatCardModule,
     MatIconModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

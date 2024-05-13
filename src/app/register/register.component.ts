@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
@@ -12,7 +13,11 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   wasRegisteredSuccessfully: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private _snackBar: MatSnackBar
+  ) {
     this.registerForm = new FormGroup({
       email: new FormControl(''),
       name: new FormControl(''),
@@ -33,9 +38,11 @@ export class RegisterComponent implements OnInit {
         console.log(response);
         this.wasRegisteredSuccessfully = true;
         this.router.navigate(['/login']);
+        this._snackBar.open('Account created', 'ok');
       })
       .catch((error) => {
         console.log(error);
+        this._snackBar.open('Registration failed', 'ok');
       });
   }
 
