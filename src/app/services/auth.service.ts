@@ -10,7 +10,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   isLoggedIn = false;
-  userRole: string = '';
+  userRole: string | null = null;
 
   fetchData() {
     return this.http.get('http://localhost:8080/greeting');
@@ -32,7 +32,7 @@ export class AuthService {
       console.log('trigger Loginflag');
       this.isLoggedIn = true;
       //TODO: assign user role to authService.userRole
-      this.userRole = response.data;
+      this.userRole = response.data.role;
     });
 
     return res;
@@ -49,7 +49,7 @@ export class AuthService {
 
   logout() {
     this.isLoggedIn = false;
-    this.userRole = '';
+    this.userRole = null;
     console.log('trigger Logoutflag');
     this.router.navigate(['login']);
   }

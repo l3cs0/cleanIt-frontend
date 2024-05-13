@@ -6,11 +6,13 @@
 
   <nav>
     <ul>
-      <li *ngIf="authService.isLoggedIn"><a routerLink="/">Home</a></li>
       <li *ngIf="authService.isLoggedIn">
-        <a routerLink="/createCustomer">New Order</a>
+        <a routerLink="/">Home</a>
       </li>
-      <li *ngIf="authService.isLoggedIn">
+      <li *ngIf="authService.isLoggedIn && authService.userRole == 'Employee'">
+        <a routerLink="/newOrder">New Order</a>
+      </li>
+      <li *ngIf="authService.isLoggedIn && authService.userRole == 'Manager'">
         <a routerLink="/orderOverview">Order Overview</a>
       </li>
 

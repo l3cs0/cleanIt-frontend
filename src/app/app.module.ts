@@ -22,6 +22,7 @@ import { LoginComponent } from './login/login.component';
 import { OrderCardComponent } from './order-card/order-card.component';
 import { OrderOverviewComponent } from './order-overview/order-overview.component';
 import { RegisterComponent } from './register/register.component';
+import { NewOrderComponent } from './new-order/new-order.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { RegisterComponent } from './register/register.component';
     OrderCardComponent,
     LoginComponent,
     RegisterComponent,
+    NewOrderComponent,
   ],
   imports: [
     BrowserModule,
