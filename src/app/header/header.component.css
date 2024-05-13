@@ -1,6 +1,6 @@
 header {
     background-color: #ffd15f;
-    color: #356675;
+    color: #673ab6;
     padding: 10px;
     display: flex;
     align-items: center;
@@ -13,7 +13,7 @@ header {
     align-items: center;
     flex-direction: column;
     text-decoration: none;
-    color: black;
+    color: #673ab6;
     font-size: 3em;
     font-weight: 900;
 }
