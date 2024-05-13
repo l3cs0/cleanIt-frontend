@@ -8,7 +8,15 @@
     <ul>
       <li><a routerLink="/">Home</a></li>
       <li><a routerLink="/createCustomer">Add Customer</a></li>
-      <li><a routerLink="/orderOverview">Overview</a></li>
+      <li><a routerLink="/orderOverview">Order Overview</a></li>
+      <button
+        *ngIf="authService.isLoggedIn"
+        mat-raised-button
+        color="primary"
+        (click)="logout()"
+      >
+        Logout
+      </button>
     </ul>
   </nav>
 </header>
