@@ -15,6 +15,7 @@ export class NewOrderComponent implements OnInit {
     if (form.valid) {
       console.log('Form submitted successfully!');
       console.log('Form value:', form.value);
+
       form.resetForm();
     }
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
@@ -10,24 +10,24 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
-
   constructor(
     private authService: AuthService,
     private router: Router,
     private _snackBar: MatSnackBar
-  ) {
-    this.loginForm = new FormGroup({
-      email: new FormControl(''),
-      password: new FormControl(''),
-    });
-  }
+  ) {}
 
   ngOnInit(): void {}
 
-  login(): void {
-    let email = this.loginForm.value.email;
-    let password = this.loginForm.value.password;
+  onSubmit(form: NgForm) {
+    if (form.valid) {
+      this.login(form);
+      form.resetForm();
+    }
+  }
+
+  login(form: any): void {
+    let email = form.value.email;
+    let password = form.value.password;
 
     this.authService
       .login(email, password)

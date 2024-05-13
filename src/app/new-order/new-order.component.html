@@ -1,8 +1,8 @@
 <mat-card>
   <form
     class="customer-form"
-    #createCustomerForm="ngForm"
-    (ngSubmit)="onSubmit(createCustomerForm)"
+    #newOrderForm="ngForm"
+    (ngSubmit)="onSubmit(newOrderForm)"
   >
     <mat-card-header>
       <mat-card-title>Add Customer</mat-card-title>
@@ -30,6 +30,7 @@
           ngModel
           #email="ngModel"
           email
+          required
         />
         <mat-error *ngIf="email.invalid && email.touched"
           >Invalid email</mat-error
@@ -44,6 +45,7 @@
           ngModel
           #phone="ngModel"
           pattern="[0-9]*"
+          required
         />
         <mat-error *ngIf="phone.invalid && phone.touched"
           >Invalid phone number</mat-error
@@ -55,7 +57,7 @@
         mat-raised-button
         color="primary"
         type="submit"
-        [disabled]="createCustomerForm.invalid"
+        [disabled]="newOrderForm.invalid"
       >
         Add Customer
       </button>
