@@ -16,28 +16,21 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    return this.http.post('http://localhost:8080/login', {
-      email: email,
-      password: password,
-    });
+    return this.http.post(
+      `http://localhost:8080/login?email=${email}&password=${password}`,
+      {
+        email: email,
+        password: password,
+      }
+    );
   }
 
-  register(
-    email: string,
-    name: string,
-    password: string,
-    passwordRepeat: string
-  ) {
-    return new Observable((observer) => {
-      //call the API here
-      setTimeout(() => {
-        observer.next({
-          email: email,
-          name: name,
-          password: password,
-          passwordRepeat: passwordRepeat,
-        });
-      }, 1000);
+  register(id: number, email: string, name: string, password: string) {
+    return this.http.post(`http://localhost:8080/register`, {
+      id: id,
+      email: email,
+      name: name,
+      password: password,
     });
   }
 }

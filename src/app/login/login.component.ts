@@ -26,11 +26,14 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(email, password).subscribe({
       next: (response) => {
+        console.log('Login Erfolgreich');
         console.log(response);
         this.router.navigate(['']);
       },
       error: (error) => {
+        console.log('Login Fehlgeschlagen');
         console.log(error);
+        this.router.navigate(['']);
       },
     });
   }
