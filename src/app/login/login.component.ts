@@ -34,11 +34,10 @@ export class LoginComponent implements OnInit {
       .login(email, password)
       .then((response) => {
         this.router.navigate(['']);
-        this._snackBar.open('Login Successful', 'ok');
+        this._snackBar.open(response.data, 'ok');
       })
       .catch((error) => {
-        this._snackBar.open('Login Failed', 'ok');
-        console.log(error);
+        this._snackBar.open(error.response.data, 'ok');
       });
   }
 }
