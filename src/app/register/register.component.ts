@@ -38,11 +38,11 @@ export class RegisterComponent implements OnInit {
         console.log(response);
         this.wasRegisteredSuccessfully = true;
         this.router.navigate(['/login']);
-        this._snackBar.open('Account created', 'ok');
+        this._snackBar.open(response.data.message, 'ok');
       })
       .catch((error) => {
         console.log(error);
-        this._snackBar.open('Registration failed', 'ok');
+        this._snackBar.open(error.response.data.message, 'ok');
       });
   }
 

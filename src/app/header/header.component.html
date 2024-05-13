@@ -1,14 +1,19 @@
 <header>
-  <a class="logo" routerLink="/login">
+  <a class="logo" routerLink="/">
     <img src="{{ logoSrc }}" alt="logo" />
     <div>CleanIt!</div>
   </a>
 
   <nav>
     <ul>
-      <li><a routerLink="/">Home</a></li>
-      <li><a routerLink="/createCustomer">Add Customer</a></li>
-      <li><a routerLink="/orderOverview">Order Overview</a></li>
+      <li *ngIf="authService.isLoggedIn"><a routerLink="/">Home</a></li>
+      <li *ngIf="authService.isLoggedIn">
+        <a routerLink="/createCustomer">New Order</a>
+      </li>
+      <li *ngIf="authService.isLoggedIn">
+        <a routerLink="/orderOverview">Order Overview</a>
+      </li>
+
       <button
         *ngIf="authService.isLoggedIn"
         mat-raised-button
