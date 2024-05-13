@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import axios from 'axios';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,7 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    return this.http.post(
+    return axios.post(
       `http://localhost:8080/login?email=${email}&password=${password}`,
       {
         email: email,
@@ -26,7 +26,7 @@ export class AuthService {
   }
 
   register(id: number, email: string, name: string, password: string) {
-    return this.http.post(`http://localhost:8080/register`, {
+    return axios.post(`http://localhost:8080/register`, {
       id: id,
       email: email,
       name: name,
