@@ -38,9 +38,8 @@ export class AuthService {
     return res;
   }
 
-  register(id: number, email: string, name: string, password: string) {
+  register(email: string, name: string, password: string) {
     return axios.post(`http://localhost:8080/register`, {
-      id: id,
       email: email,
       name: name,
       password: password,

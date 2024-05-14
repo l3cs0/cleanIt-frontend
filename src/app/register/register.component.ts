@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
@@ -25,15 +25,26 @@ export class RegisterComponent implements OnInit {
       passwordRepeat: new FormControl(''),
     });
   }
+  onSubmit(form: NgForm) {
+    if (form.valid) {
+      this.register(form);
+      form.resetForm();
+    }
+  }
 
-  register() {
-    let email = this.registerForm.value.email;
-    let name = this.registerForm.value.name;
-    let password = this.registerForm.value.password;
-    let passwordRepeat = this.registerForm.value.passwordRepeat;
+  register(form: any) {
+    let email = form.value.email;
+    let name = form.value.name;
+    let password = form.value.password;
+    let passwordRepeat = form.value.passwordRepeat;
+
+    if (password !== passwordRepeat) {
+      this._snackBar.open('Passwords do not match', 'ok');
+      return;
+    }
 
     this.authService
-      .register(email, name, password, passwordRepeat)
+      .register(email, name, password)
       .then((response) => {
         console.log(response);
         this.wasRegisteredSuccessfully = true;
