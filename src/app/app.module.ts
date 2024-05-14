@@ -11,7 +11,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CreateCustomerFormComponent } from './create-customer-form/create-customer-form.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
@@ -19,16 +18,15 @@ import { HomeComponent } from './home/home.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LoginComponent } from './login/login.component';
+import { NewOrderComponent } from './new-order/new-order.component';
 import { OrderCardComponent } from './order-card/order-card.component';
 import { OrderOverviewComponent } from './order-overview/order-overview.component';
 import { RegisterComponent } from './register/register.component';
-import { NewOrderComponent } from './new-order/new-order.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    CreateCustomerFormComponent,
     HomeComponent,
     FooterComponent,
     OrderOverviewComponent,
