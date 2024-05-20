@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-new-order',
@@ -7,9 +9,29 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./new-order.component.css'],
 })
 export class NewOrderComponent implements OnInit {
-  constructor() {}
+  users: any[] = [];
+  items: { name: string }[] = [];
 
-  ngOnInit(): void {}
+  constructor(private apiService: ApiService, private _snackBar: MatSnackBar) {}
+
+  addItem(): void {
+    this.items.push({ name: '' });
+  }
+
+  removeItem(index: number): void {
+    this.items.splice(index, 1);
+  }
+
+  ngOnInit(): void {
+    this.apiService
+      .getAllCustomers()
+      .then((response) => {
+        this.users = response.data;
+      })
+      .catch((error) => {
+        this._snackBar.open("Couldn't fetch users", 'ok');
+      });
+  }
 
   onSubmit(form: NgForm) {
     if (form.valid) {

@@ -9,48 +9,38 @@
     </mat-card-header>
     <mat-card-content>
       <mat-form-field>
-        <input
-          matInput
-          placeholder="Name"
-          name="name"
+        <mat-label>Customer</mat-label>
+        <select
+          matNativeControl
+          name="customer"
           ngModel
           #name="ngModel"
           required
-        />
-        <mat-error *ngIf="name.invalid && name.touched"
-          >Name is required</mat-error
         >
+          <option *ngFor="let user of users" [value]="user.id">
+            {{ user.name }}
+          </option>
+        </select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Notes</mat-label>
+        <input matInput name="notes" ngModel #phone="ngModel" />
       </mat-form-field>
 
-      <mat-form-field>
-        <input
-          matInput
-          placeholder="Email"
-          name="email"
-          ngModel
-          #email="ngModel"
-          email
-          required
-        />
-        <mat-error *ngIf="email.invalid && email.touched"
-          >Invalid email</mat-error
-        >
-      </mat-form-field>
-
-      <mat-form-field>
-        <input
-          matInput
-          placeholder="Phone"
-          name="phone"
-          ngModel
-          #phone="ngModel"
-          pattern="[0-9]*"
-          required
-        />
-        <mat-error *ngIf="phone.invalid && phone.touched"
-          >Invalid phone number</mat-error
-        >
-      </mat-form-field>
+      <div *ngFor="let item of items; let i = index" class="item-row">
+        <mat-form-field class="item-form-field">
+          <mat-label>Item:</mat-label>
+          <input
+            matInput
+            id="item-{{ i }}"
+            name="items"
+            [(ngModel)]="item.name"
+            required
+          />
+        </mat-form-field>
+        <button mat-raised-button (click)="removeItem(i)">Remove</button>
+      </div>
+      <button mat-raised-button (click)="addItem()">Add Item</button>
     </mat-card-content>
     <mat-card-actions>
       <button
