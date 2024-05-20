@@ -10,12 +10,12 @@ import { ApiService } from '../services/api.service';
 })
 export class NewOrderComponent implements OnInit {
   users: any[] = [];
-  items: { name: string }[] = [];
+  items: string[] = [];
 
   constructor(private apiService: ApiService, private _snackBar: MatSnackBar) {}
 
   addItem(): void {
-    this.items.push({ name: '' });
+    this.items.push('');
   }
 
   removeItem(index: number): void {
@@ -35,10 +35,11 @@ export class NewOrderComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     if (form.valid) {
+      const inputValues = this.items;
       console.log('Form submitted successfully!');
       console.log('Form value:', form.value);
 
-      form.resetForm();
+      // form.resetForm();
     }
   }
 }

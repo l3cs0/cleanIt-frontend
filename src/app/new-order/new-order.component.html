@@ -5,7 +5,7 @@
     (ngSubmit)="onSubmit(newOrderForm)"
   >
     <mat-card-header>
-      <mat-card-title>Add Customer</mat-card-title>
+      <mat-card-title>New Order</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <mat-form-field>
@@ -30,13 +30,7 @@
       <div *ngFor="let item of items; let i = index" class="item-row">
         <mat-form-field class="item-form-field">
           <mat-label>Item:</mat-label>
-          <input
-            matInput
-            id="item-{{ i }}"
-            name="items"
-            [(ngModel)]="item.name"
-            required
-          />
+          <input matInput name="item-{{ i }}" ngModel required />
         </mat-form-field>
         <button mat-raised-button (click)="removeItem(i)">Remove</button>
       </div>

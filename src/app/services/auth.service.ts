@@ -9,8 +9,10 @@ import axios from 'axios';
 export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
-  isLoggedIn = false;
-  userRole: string | null = null;
+  // TODO set to false
+  isLoggedIn = true;
+  // TODO set to null
+  userRole: string | null = 'Employee';
 
   fetchData() {
     return this.http.get('http://localhost:8080/greeting');
