@@ -8,6 +8,10 @@ import axios from 'axios';
 export class ApiService {
   constructor() {}
 
+  getAllCustomers() {
+    return axios.get('http://localhost:8080/customers');
+  }
+
   getAllOrders() {
     return axios.get('http://localhost:8080/orders');
   }

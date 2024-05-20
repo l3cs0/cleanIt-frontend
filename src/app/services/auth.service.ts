@@ -29,9 +29,7 @@ export class AuthService {
     );
 
     res.then((response) => {
-      console.log('trigger Loginflag');
       this.isLoggedIn = true;
-      //TODO: assign user role to authService.userRole
       this.userRole = response.data.role;
     });
 
@@ -47,9 +45,11 @@ export class AuthService {
   }
 
   logout() {
-    this.isLoggedIn = false;
-    this.userRole = null;
-    console.log('trigger Logoutflag');
+    let res = axios.post(`http://localhost:8080/logout`);
+    res.then((response) => {
+      this.isLoggedIn = false;
+      this.userRole = response.data.role;
+    });
     this.router.navigate(['login']);
   }
 }
