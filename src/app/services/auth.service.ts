@@ -8,13 +8,14 @@ import axios from 'axios';
 })
 export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
-
   // TODO set initially to false
-  isLoggedIn = true;
+  isLoggedIn = false;
   // TODO set initially to null
-  userRole: string | null = 'Employee';
+  userRole: string | null = null;
   // TODO set initially to null
-  userName: string | null = 'Name';
+  userName: string | null = null;
+  // TODO set initially to null
+  userId: number | null = null;
 
   login(email: string, password: string) {
     let res = axios.post(
@@ -29,6 +30,7 @@ export class AuthService {
       this.isLoggedIn = true;
       this.userRole = response.data.role;
       this.userName = response.data.name;
+      this.userId = response.data.userId;
     });
 
     return res;

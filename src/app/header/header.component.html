@@ -9,11 +9,20 @@
       <li *ngIf="authService.isLoggedIn">
         <a routerLink="/">Home</a>
       </li>
-      <li *ngIf="authService.isLoggedIn && authService.userRole == 'Employee'">
+      <li
+        *ngIf="
+          authService.isLoggedIn &&
+          (authService.userRole == 'Employee' ||
+            authService.userRole == 'Manager')
+        "
+      >
         <a routerLink="/newOrder">New Order</a>
       </li>
       <li *ngIf="authService.isLoggedIn && authService.userRole == 'Manager'">
         <a routerLink="/orderOverview">Order Overview</a>
+      </li>
+      <li *ngIf="authService.isLoggedIn && authService.userRole == 'Customer'">
+        <a routerLink="/orderOverviewCustomer">Order Overview</a>
       </li>
       <li>
         <button

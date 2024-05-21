@@ -3,11 +3,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 80vh;
 }
 
-.buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+h1 {
+    color: #673ab6;
+    font-size: xx-large;
+    font-weight: bold;
 }

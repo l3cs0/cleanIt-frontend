@@ -36,10 +36,10 @@ export class NewOrderComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     if (form.valid) {
-      const data = this.transformObject(form);
+      const order = this.transformObject(form);
       console.log('Form submitted successfully!');
-      console.log('Form value:', data);
-      this.apiService.createOrder(data).then((response) => {
+      console.log('Form value:', order);
+      this.apiService.createOrder(order).then((response) => {
         console.log(response);
         this._snackBar.open(
           'Order created successfully. ID: ' + response.data.id,

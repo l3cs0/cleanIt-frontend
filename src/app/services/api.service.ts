@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 
@@ -16,18 +15,11 @@ export class ApiService {
     return axios.get('http://localhost:8080/orders');
   }
 
-  getOrderByUserId(userId: string) {
+  getOrderByUserId(userId: number) {
     return axios.get(`http://localhost:8080/ordersByUserId?userId=${userId}`);
   }
 
   createOrder(order: any) {
     return axios.post('http://localhost:8080/order', order);
   }
-
-  // Order
-  // {
-  //   "id": 4,
-  //   "userId": "user1",
-  //   "items": ["item1", "item2", "item3"]
-  // }
 }
