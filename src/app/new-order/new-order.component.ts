@@ -20,6 +20,7 @@ export class NewOrderComponent implements OnInit {
 
   removeItem(index: number): void {
     this.items.splice(index, 1);
+    console.log(this.items);
   }
 
   ngOnInit(): void {
@@ -35,11 +36,26 @@ export class NewOrderComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     if (form.valid) {
-      const inputValues = this.items;
+      const data = this.transformObject(form);
       console.log('Form submitted successfully!');
-      console.log('Form value:', form.value);
+      console.log('Form value:', data);
 
       // form.resetForm();
     }
+  }
+
+  transformObject(form: NgForm): {
+    customer: string;
+    notes: string;
+    items: string[];
+  } {
+    let items: string[] = [];
+    for (let key in form.value) {
+      if (key.startsWith('item-')) {
+        items.push(form.value[key]);
+        delete form.value[key];
+      }
+    }
+    return { ...form.value, items };
   }
 }
