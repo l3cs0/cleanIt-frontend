@@ -21,7 +21,7 @@ export class ApiService {
   }
 
   createOrder(order: any) {
-    return axios.post('http://localhost:8080/orders', order);
+    return axios.post('http://localhost:8080/order', order);
   }
 
   // Order

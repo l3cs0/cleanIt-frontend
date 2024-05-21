@@ -39,13 +39,19 @@ export class NewOrderComponent implements OnInit {
       const data = this.transformObject(form);
       console.log('Form submitted successfully!');
       console.log('Form value:', data);
-
-      // form.resetForm();
+      this.apiService.createOrder(data).then((response) => {
+        console.log(response);
+        this._snackBar.open(
+          'Order created successfully. ID: ' + response.data.id,
+          'ok'
+        );
+      });
+      form.resetForm();
     }
   }
 
   transformObject(form: NgForm): {
-    customer: string;
+    userId: number;
     notes: string;
     items: string[];
   } {
@@ -56,6 +62,6 @@ export class NewOrderComponent implements OnInit {
         delete form.value[key];
       }
     }
-    return { ...form.value, items };
+    return { ...form.value, items, userId: +form.value.userId };
   }
 }
