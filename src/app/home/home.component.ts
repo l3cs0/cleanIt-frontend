@@ -7,21 +7,6 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private authService: AuthService) {}
-
+  constructor() {}
   ngOnInit(): void {}
-
-  data: any;
-  fetchData() {
-    this.authService.fetchData().subscribe((response) => {
-      this.data = response;
-      console.log('Datablabla: ', this.data);
-    });
-  }
-  fetchContainerData() {
-    this.authService.fetchContainerData().subscribe((response) => {
-      this.data = response;
-      console.log('DatafromContainer: ', this.data);
-    });
-  }
 }

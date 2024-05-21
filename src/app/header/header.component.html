@@ -15,15 +15,19 @@
       <li *ngIf="authService.isLoggedIn && authService.userRole == 'Manager'">
         <a routerLink="/orderOverview">Order Overview</a>
       </li>
-
-      <button
-        *ngIf="authService.isLoggedIn"
-        mat-raised-button
-        color="primary"
-        (click)="logout()"
-      >
-        Logout
-      </button>
+      <li>
+        <button
+          *ngIf="authService.isLoggedIn"
+          mat-raised-button
+          color="primary"
+          (click)="logout()"
+        >
+          Logout
+        </button>
+      </li>
+      <li *ngIf="authService.isLoggedIn">
+        {{ authService.userName }} ({{ authService.userRole }})
+      </li>
     </ul>
   </nav>
 </header>
