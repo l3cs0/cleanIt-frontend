@@ -8,6 +8,12 @@
     padding-bottom: 60px;
 }
 
+mat-form-field {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
 app-order-card {
     box-sizing: border-box;
     height: auto;
@@ -16,4 +22,16 @@ app-order-card {
 
 mat-card {
     height: auto;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+h1 {
+    color: #673ab6;
+    font-size: xx-large;
+    font-weight: bold;
 }

@@ -22,4 +22,10 @@ export class ApiService {
   createOrder(order: any) {
     return axios.post('http://localhost:8080/order', order);
   }
+
+  getOrdersByUserName(userName: string) {
+    return axios.get(
+      `http://localhost:8080/ordersByUserName?userName=${userName}`
+    );
+  }
 }

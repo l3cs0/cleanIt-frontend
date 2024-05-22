@@ -5,6 +5,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { fromEvent } from 'rxjs';
 import {
   debounceTime,
@@ -21,7 +22,7 @@ import { ApiService } from '../services/api.service';
 })
 export class OrderOverviewComponent implements OnInit {
   @ViewChild('input') input?: ElementRef;
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private _snackBar: MatSnackBar) {}
   public orders: any = [];
 
   ngAfterViewInit() {
@@ -32,8 +33,20 @@ export class OrderOverviewComponent implements OnInit {
           debounceTime(500),
           distinctUntilChanged(),
           tap((text) => {
-            //TODO put API call here
-            if (this.input) console.log(this.input.nativeElement.value);
+            if (this.input) {
+              this.apiService
+                .getOrdersByUserName(this.input.nativeElement.value)
+                .then((response) => {
+                  this._snackBar.open(
+                    `Orders for '${this.input?.nativeElement.value}' fetched successfully`,
+                    'ok',
+                    {
+                      duration: 1000,
+                    }
+                  );
+                  this.orders = response.data;
+                });
+            }
           })
         )
         .subscribe();
