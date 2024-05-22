@@ -21,11 +21,11 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    //TODO add matchnign role check (&& this.authService.userRole === 'admin')
-    if (this.authService.isLoggedIn) {
+    const expectedRoles = next.data['roles'];
+    const userRole = this.authService.userRole;
+    if (this.authService.isLoggedIn && expectedRoles.includes(userRole)) {
       return true;
     } else {
-      // Redirect to login page or unauthorized page
       this.router.navigate(['/login']);
       return false;
     }

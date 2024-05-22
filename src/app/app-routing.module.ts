@@ -9,26 +9,31 @@ import { OrderOverviewComponent } from './order-overview/order-overview.componen
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  {
+    path: '',
+    component: HomeComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Customer', 'Manager', 'Employee'] },
+  },
   {
     path: 'newOrder',
     component: NewOrderComponent,
     canActivate: [AuthGuard],
-    data: { roles: 'Employee' },
+    data: { roles: ['Employee', 'Manager'] },
   },
   {
     path: 'orderOverview',
     component: OrderOverviewComponent,
     canActivate: [AuthGuard],
-    data: { roles: 'Manager' },
+    data: { roles: ['Manager'] },
   },
   {
     path: 'orderOverviewCustomer',
     component: OrderOverviewCustomerComponent,
     canActivate: [AuthGuard],
-    data: { roles: 'Customer' },
+    data: { roles: ['Customer'] },
   },
 ];
 
