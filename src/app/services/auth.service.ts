@@ -18,13 +18,10 @@ export class AuthService {
   userId: number | null = null;
 
   login(email: string, password: string) {
-    let res = axios.post(
-      `http://localhost:8080/login?email=${email}&password=${password}`,
-      {
-        email: email,
-        password: password,
-      }
-    );
+    let res = axios.post(`http://localhost:8080/login`, {
+      email: email,
+      password: password,
+    });
 
     res.then((response) => {
       this.isLoggedIn = true;
