@@ -6,10 +6,16 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./order-card.component.css'],
 })
 export class OrderCardComponent implements OnInit {
-  @Input() order: { id: string; userId: string; items: string[] } = {
+  @Input() order: {
+    id: string;
+    userId: string;
+    items: string[];
+    userName: string;
+  } = {
     id: '',
     userId: '',
     items: [],
+    userName: '',
   };
 
   constructor() {}
