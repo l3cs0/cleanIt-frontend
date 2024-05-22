@@ -9,11 +9,13 @@ export class OrderCardComponent implements OnInit {
   @Input() order: {
     id: string;
     userId: string;
+    notes: string;
     items: string[];
     userName: string;
   } = {
     id: '',
     userId: '',
+    notes: '',
     items: [],
     userName: '',
   };
